@@ -84,15 +84,15 @@ namespace lab19.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="deleteAdresa"></param>
-        [HttpDelete("{studentid}")]
-        public void DeleteStudent2(int id, [FromQuery] bool deleteAdresa) 
+        [HttpDelete()]
+        public void DeleteStudenAdvanced2(int id, [FromQuery] bool deleteAdresa) 
         {
-            DataLayerSingleton.Instance.DeleteStudent(id);
-
             if (deleteAdresa)
             {
                 DataLayerSingleton.Instance.DeleteAdresa(id);
             }
+
+            DataLayerSingleton.Instance.DeleteStudent(id);
         }
     }
 }

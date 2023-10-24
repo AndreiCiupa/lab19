@@ -97,12 +97,13 @@ namespace Catalog.DataLayer
 
             if( adresa == null)
             {
-                ctx.Adrese.Add(new Adresa
+                adresa = new Adresa
                 {
                     Oras = newOras,
                     Strada = newStrada,
                     Numar = newNumar
-                });
+                };
+                ctx.Adrese.Add(adresa);
             }
             else
             {
