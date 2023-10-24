@@ -4,6 +4,8 @@ namespace Catalog.DataLayer
 {
     public partial class DataLayerSingleton
     {
+        
+
         public void Seed()
         {
             using var ctx = new CatalogDBContext();

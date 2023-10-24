@@ -7,6 +7,6 @@
         public string Nume { get; set; }
         public string Prenume { get; set; }
         public int Varsta { get; set; }
-        public Adresa Adresa { get; set; } // Reference navigation to dependent
+        public Adresa? Adresa { get; set; } // Reference navigation to dependent
     }
 }

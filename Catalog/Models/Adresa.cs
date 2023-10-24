@@ -12,6 +12,5 @@ namespace Catalog.Models
         public string Oras { get; set; }
         public string Strada { get; set; }
         public int Numar { get; set; }
-        public Student Student { get; set; } = null!; // Required reference navigation to principal
     }
 }

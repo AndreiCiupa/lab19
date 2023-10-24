@@ -36,9 +36,11 @@ namespace lab19.Controllers
         [HttpPost()]
         public Student AddStudent(NewStudentDto studentToAdd) => 
             DataLayerSingleton.Instance.AddStudent(studentToAdd.GetNume(), 
-                studentToAdd.GetPrenume(), 
-                studentToAdd.GetOras(), 
-                studentToAdd.GetStrada());
+                studentToAdd.GetPrenume(),
+                studentToAdd.GetVarsta()
+                //studentToAdd.GetOras(), 
+                //studentToAdd.GetStrada()
+                );
 
         /// <summary>
         /// Stergere student
@@ -48,11 +50,49 @@ namespace lab19.Controllers
         public void DeleteStudent(int id) => 
             DataLayerSingleton.Instance.DeleteStudent(id);
 
-        // Modificare date student
+        /// <summary>
+        /// Modificare date student
+        /// </summary>
+        /// <param name="studentToUpdate"></param>
+        /// <returns></returns>
+        [HttpPut("UpdateStudent")]
+        public Student UpdateStudent(NewStudentDto studentToUpdate) =>
+            DataLayerSingleton.Instance.ChangeStudentData(studentToUpdate.Id,
+                studentToUpdate.GetNume(),
+                studentToUpdate.GetPrenume(),
+                studentToUpdate.GetVarsta());
+        //studentToUpdate.GetOras(),
+        //studentToUpdate.GetStrada(),
+        //studentToUpdate.GetNumar());
 
-        // Modificare adresa student
+        /// <summary>
+        /// Modificare adresa student
+        /// </summary>
+        /// <param name = "adressToUpdate"></param>
+        /// <returns></returns>
+        [HttpPut("UpdateAddress")]
+        public Adresa UpdateAddressStudent(AddressDto adressToUpdate) =>
+            DataLayerSingleton.Instance.ChangeStudentAdress(adressToUpdate.StudentId,
+                adressToUpdate.GetOras(),
+                adressToUpdate.GetStrada(),
+                adressToUpdate.GetNumar());
 
         // Stergerea unui student
 
+        /// <summary>
+        /// Stergerea unui student cu parametru pt adresa
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="deleteAdresa"></param>
+        [HttpDelete("{studentid}")]
+        public void DeleteStudent2(int id, [FromQuery] bool deleteAdresa) 
+        {
+            DataLayerSingleton.Instance.DeleteStudent(id);
+
+            if (deleteAdresa)
+            {
+                DataLayerSingleton.Instance.DeleteAdresa(id);
+            }
+        }
     }
 }
