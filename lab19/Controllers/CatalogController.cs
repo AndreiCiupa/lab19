@@ -77,8 +77,6 @@ namespace lab19.Controllers
                 adressToUpdate.GetStrada(),
                 adressToUpdate.GetNumar());
 
-        // Stergerea unui student
-
         /// <summary>
         /// Stergerea unui student cu parametru pt adresa
         /// </summary>
